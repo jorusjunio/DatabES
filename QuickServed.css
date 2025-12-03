@@ -112,7 +112,8 @@ body {
 .description {
     font-size: 18px;
     color: #666; /* Slightly lighter gray */
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    margin-left: 5px;
     line-height: 1.5;
 }
 
@@ -133,25 +134,26 @@ body {
 }
 
 /* "Order Now" Button (Primary) */
-.primary-btn {
+.order-now-btn {
     /* linear-gradient para gayahin yung orange gradient sa button */
     background: linear-gradient(90deg, #FF7E5F 0%, #FEB47B 100%);
     color: white;
     box-shadow: 0 10px 20px rgba(255, 126, 95, 0.3); /* Soft shadow */
 }
 
-.primary-btn:hover {
+.order-now-btn:hover {
     opacity: 0.9;
 }
 
 /* "View Menu" Button (Secondary) */
-.secondary-btn {
+.view-menu-btn {
+    text-decoration: none;
     background-color: transparent; /* Transparent background */
     color: #333; 
     border: 1px solid #ccc; /* Light border */
 }
 
-.secondary-btn:hover {
+.view-menu-btn:hover {
     background-color: rgba(255, 255, 255, 0.5); /* Slight white highlight on hover */
 }
 
