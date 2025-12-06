@@ -9,7 +9,7 @@ Currently in early development, major features still under construction.
 - Lourd Allen Amante – Backend
 - John Patrick Hawac – Database & Documentation
 
-##📨 Implementation Support / Contact
+## 📨 Implementation Support / Contact
 
 For issues related to setup, bugs, or implementation details, reach out to the dev team:
 
