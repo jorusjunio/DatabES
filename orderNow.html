@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>QuickServed Order</title>
+    <link rel="stylesheet" href="landingPage.css">
+    <style>
+        /* Page layout */
+        .menu-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: var(--base-variant);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px #00000045;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .category-buttons button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 20px;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .item-card {
+            background: var(--base-color);
+            border-radius: 14px;
+            padding: 15px;
+            box-shadow: 0px 5px 10px #00000025;
+            text-align: center;
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .item-card button {
+            margin-top: 10px;
+            padding: 10px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Cart Panel */
+        .cart-container {
+            margin-top: 35px;
+            background: var(--base-color);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px #00000035;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .cart-item button {
+            background: red;
+            border: none;
+            padding: 6px 10px;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Order tracking */
+        #orderStatusBox {
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--base-variant);
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+            color: var(--text-color);
+        }
+
+        #trackBtn {
+            margin-top: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">QS</div>
+            <div class="brand-text">
+                <strong>QuickServed</strong>
+                <div class="tag">Fast Food Ordering</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <nav class="nav">
+                <a href="landingPage.html">Home</a>
+            </nav>
+
+            <button id="theme-switch" class="theme-toggle">
+                🌙
+            </button>
+        </div>
+    </header>
+
+    <div class="menu-container">
+
+        <h2>Our Menu</h2>
+
+        <div class="category-buttons">
+            <button onclick="loadCategory('burgers')">Burgers</button>
+            <button onclick="loadCategory('drinks')">Drinks</button>
+            <button onclick="loadCategory('desserts')">Desserts</button>
+        </div>
+
+        <div class="items-grid" id="itemsGrid"></div>
+
+        <div class="cart-container">
+            <h3>Shopping Cart</h3>
+            <div id="cartItems"></div>
+            <p><strong>Total: ₱<span id="totalPrice">0</span></strong></p>
+        </div>
+
+        <button id="trackBtn" onclick="trackOrder()">Track My Order</button>
+
+        <div id="orderStatusBox"></div>
+    </div>
+
+    <script src="themeSwitcher.js"></script>
+
+    <script>
+        const menuData = {
+            burgers: [
+                { name: "Cheese Burger", price: 25, img: "Cheese Burger.gif" },
+                { name: "Hotdog", price: 35, img: "Hotdog.gif" },
+                { name: "Spaghetti", price: 99, img: "Spaghetti.gif" }
+            ],
+            drinks: [
+                { name: "Iced Tea", price: 39, img: "Ice Tea.gif" },
+                { name: "Milkshake", price: 89, img: "MilkShake.gif" },
+                { name: "Cold Brew", price: 79, img: "Cold Brew.gif" }
+            ],
+            desserts: [
+                { name: "Brownie", price: 59, img: "Brownies.jpg" },
+                { name: "Ice Cream", price: 49, img: "Ice Cream.gif" },
+                { name: "Donut", price: 39, img: "Donut.gif" }
+            ]
+        };
+
+        const itemsGrid = document.getElementById("itemsGrid");
+        const cartItems = document.getElementById("cartItems");
+        let cart = [];
+
+        function loadCategory(category) {
+            itemsGrid.innerHTML = "";
+            menuData[category].forEach(item => {
+                itemsGrid.innerHTML += `
+                <div class="item-card">
+                    <img src="${item.img}">
+                    <h4>${item.name}</h4>
+                    <p>₱${item.price}</p>
+                    <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
+                </div>`;
+            });
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            cartItems.innerHTML = "";
+            let total = 0;
+
+            cart.forEach((item, i) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name} - ₱${item.price}</span>
+                        <button onclick="removeItem(${i})">X</button>
+                    </div>`;
+            });
+
+            document.getElementById("totalPrice").innerText = total;
+        }
+
+        // ORDER TRACKING
+        function trackOrder() {
+            const statusBox = document.getElementById("orderStatusBox");
+            statusBox.style.display = "block";
+            statusBox.innerHTML = "Order Status: Processing...";
+
+            setTimeout(() => statusBox.innerHTML = "Order Status: Preparing Food...", 2000);
+            setTimeout(() => statusBox.innerHTML = "Order Status: Out for Delivery...", 5000);
+            setTimeout(() => statusBox.innerHTML = "Order Status: Delivered ✔", 8000);
+        }
+
+        // Load default category
+        loadCategory("burgers");
+    </script>
+</body>
+</html>
