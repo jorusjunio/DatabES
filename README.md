@@ -5,8 +5,8 @@ Currently in early development, major features still under construction.
 
 
 ## 👥 Contributors
-- Jorus Junio – Frontend/UI
-- Lourd Allen Amante – Backend
+- Jorus Junio – Backend
+- Lourd Allen Amante – Frontend/UI
 - John Patrick Hawac – Database & Documentation
 
 ## 📨 Implementation Support / Contact
