@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>How It Works - QuickServed</title>
+    <link rel="stylesheet" href="landingPage.css">
+
+    <style>
+        .how-wrapper {
+            max-width: 900px;
+            margin: 30px auto;
+            background: var(--base-variant);
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0px 6px 15px #00000040;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .step-box {
+            background: var(--base-color);
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0px 4px 12px #00000030;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .step-box img {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .step-text h2 {
+            margin: 0 0 5px;
+            color: var(--text-color);
+        }
+
+        .step-text p {
+            color: var(--secondary-text);
+        }
+
+        @media (max-width: 700px) {
+            .step-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-box img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">QS</div>
+            <div class="brand-text">
+                <strong>QuickServed</strong>
+                <div class="tag">Fast food ordering</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <nav class="nav">
+                <a href="landingPage.html">Home</a>
+                <a href="simpleMenu.html">Menu</a>
+            </nav>
+
+            <button id="theme-switch" class="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <!-- HOW IT WORKS CONTENT -->
+    <div class="how-wrapper">
+        <h1>How It Works</h1>
+
+        <div class="steps">
+
+            <!-- Step 1 -->
+            <div class="step-box">
+                <img src="Browse.gif" alt="Browse Menu">
+                <div class="step-text">
+                    <h2>1. Browse the Menu</h2>
+                    <p>Explore our delicious selection of burgers, drinks, and desserts. Choose what you love!</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-box">
+                <img src="Add to cart.gif" alt="Add to cart">
+                <div class="step-text">
+                    <h2>2. Add Items to Cart</h2>
+                    <p>Click “Order Now” on any item to add it to your virtual shopping cart.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-box">
+                <img src="Check Out.gif" alt="Checkout">
+                <div class="step-text">
+                    <h2>3. Checkout</h2>
+                    <p>Review your order, confirm your items, and place your order quickly and easily.</p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-box">
+                <img src="Track Order.gif" alt="Order Tracking">
+                <div class="step-text">
+                    <h2>4. Track Your Order</h2>
+                    <p>Follow your order status from “Processing” all the way to “Delivered”.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="themeSwitcher.js"></script>
+
+</body>
+</html>
