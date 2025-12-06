@@ -1,4 +1,4 @@
-# QuickServed Ordering System
+## QuickServed Ordering System
 
 A simple web-based ordering system for small food stalls. Handles menu display, order creation, and basic item management.
 Currently in early development, major features still under construction.
@@ -8,3 +8,14 @@ Currently in early development, major features still under construction.
 - Jorus Junio – Frontend/UI
 - Lourd Allen Amante – Backend
 - John Patrick Hawac – Database & Documentation
+
+#📨 Implementation Support / Contact
+
+For issues related to setup, bugs, or implementation details, reach out to the dev team:
+
+- Jorus Junio – Backend
+ - Email: jorusjunio28@gmail.com
+- Lourd Allen Amante – Frontend/System Setup
+ - Email: lourdallen30@gmail.com
+John Patrick Hawac – Database/SQL
+ - Email: patrickhawacjohn@gmail.com
