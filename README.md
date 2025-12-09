@@ -14,9 +14,7 @@ Currently in early development, major features still under construction.
 For issues related to setup, bugs, or implementation details, reach out to the dev team:
 
 Jorus Junio – Backend
----
 Lourd Allen Amante – Frontend/System Setup
----
 John Patrick Hawac – Database/SQL
 
 - **Email:** _jorusjunio28@gmail.com_
