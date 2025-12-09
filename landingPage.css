@@ -31,31 +31,19 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-      circle at top right,
-      rgb(224, 143, 108) 50px,
-      rgba(255, 182, 151, 0) 100%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(247, 238, 255, 0.322) 100%,
-      rgba(247, 238, 255, 0) 100%
-    );
-  z-index: -1; /* Behind everything */
-  pointer-events: none; /* Don't block clicks */
+  background-image: url("dashboardMenu/Background\ 1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  z-index: -1; 
+  pointer-events: none; 
 }
 
 body.darkmode::before {
-  background: radial-gradient(
-      circle at top right,
-      rgba(139, 138, 138, 0.8) 0%,
-      rgba(57, 57, 57, 0) 50%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(68, 68, 68, 0.6) 0%,
-      rgba(18, 18, 18, 0) 50%
-    );
+  background-image: url("dashboardMenu/Background\ 1.jpg");
+  opacity: 0.05;
+  filter: grayscale(100%);
 }
 
 a,
@@ -158,8 +146,22 @@ a {
   transition: transform 0.3s ease;
   transform: rotate(0deg);
 }
+
+.dropdown-icon svg {
+  fill: #000000;
+}
+
+.darkmode .dropdown-icon svg {
+  fill: #ffffff;
+}
+
 .services:hover .dropdown-icon {
+  fill: #000000;
   transform: rotate(180deg);
+}
+
+.services:hover .dropdown-icon svg {
+  fill: #000000;
 }
 
 /* header */
@@ -183,7 +185,7 @@ a {
   font-size: 25px;
   padding: 10px 25px;
   border: 3px solid rgba(192, 90, 58, 0.3);
-  border-radius: 20px;
+  border-radius: 50px;
   width: fit-content;
   margin-bottom: px;
   margin-left: 70px;
@@ -261,10 +263,10 @@ a {
 
 /* Middle text section */
 .description {
-  font-size: 18px;
-  color: #666;
+  font-size: 17px;
+  color: #000000;
   margin-bottom: 20px;
-  margin-left: 5px;
+  margin-left: 10px;
   line-height: 1.5;
 }
 
@@ -272,23 +274,15 @@ a {
   color: #ffffff;
 }
 
-.hero-content h1 {
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  color: #333;
-}
-
 .hero-content .highlight {
   color: #ff7e5f;
 }
 
 .mid {
-  display: grid;
+  display: flex;
   align-items: center;
   max-width: 1040px;
-  margin: 10px auto;
+  margin: auto;
   gap: 15px;
 }
 
@@ -339,17 +333,6 @@ a {
   box-shadow: 0px 3px 3px 2px rgba(130, 129, 129, 0.4);
 }
 
-.btn-secondary {
-  background-color: transparent;
-  color: var(--text-color);
-  padding: 20px 30px;
-  border-radius: 28px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0px 3px 3px 2px rgba(130, 129, 129, 0.4);
-}
-
 .darkmode .btn-primary {
   box-shadow: 0px 3px 3px 2px rgba(0, 0, 0, 0.4);
 }
@@ -366,4 +349,116 @@ a {
   background-image: linear-gradient(#ff9500, #ff6a00);
 }
 
+/* menu section */
+.menu-section {
+  padding-left: 100px;
+  text-align: center;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.tab {
+  line-height: 1.1;
+  display: block;
+  margin-top: -10px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  background: #a1680c;
+  color: #ffff;
+  cursor: pointer;
+  font-weight: 750;
+  transition: 0.2s;
+  box-shadow: 0px 3px 3px 2px rgba(130, 129, 129, 0.4);
+}
+
+.darkmode .tab {
+  background: #a1680c;
+  color: #151414;
+}
+
+.featured-menu {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 40px 20px;
+}
+
+.featured-menu h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--text-color);
+}
+
+.menu-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.menu-card {
+  background: var(--base-variant);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.menu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(255, 126, 95, 0.3);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  position: relative;
+}
+
+.card-content h3 {
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+}
+
+.card-content .price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff7e5f;
+  margin: 10px 0;
+}
+
+.badge {
+  position: absolute;
+  top: -190px;
+  right: 15px;
+  background: linear-gradient(135deg, #ff6a00, #ff9500);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.darkmode .menu-card {
+  background: #1e1e1e;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+.darkmode .menu-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 126, 95, 0.2);
+}
 
