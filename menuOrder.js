@@ -5,19 +5,6 @@ var categoryFromURL = urlParams.get('category');
 // Get all the category buttons
 var tabButtons = document.querySelectorAll('.tab');
 
-// If there's a category in the URL, highlight that tab and filter items
-if (categoryFromURL) {
-    for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove('active');
-        
-        if (tabButtons[i].dataset.category === categoryFromURL) {
-            tabButtons[i].classList.add('active');
-        }
-    }
-    // Filter items immediately
-    filterItems(categoryFromURL);
-}
-
 // Add click event to each tab button
 for (var i = 0; i < tabButtons.length; i++) {
     tabButtons[i].addEventListener('click', function() {
